@@ -1,4 +1,4 @@
 {
   "sonarHost": "https://sonar.voxloud.com",
-  "sonarProjectKey": "com.voxloud:kafka-examples"
+  "sonarProjectKey": "com.voxloud.kafka:kafka-examples-aggregator"
 }
