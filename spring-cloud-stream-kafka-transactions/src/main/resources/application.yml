@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: spring-kafka-transactions
+  data:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: command
+          consumer:
+            max-attempts: 1
+        output:
+          destination: command
+      kafka:
+        binder:
+          transaction:
+            transaction-id-prefix: tx-
+            producer:
+              configuration:
+                retries: 1
+                acks: all
+          brokers: default:9092
+          configuration:
+            isolation.level: read_committed
+  datasource:
+    password: kafka
+    username: kafka
+    url: jdbc:mysql://default:3306/kafka_test?autoReconnect=true&useSSL=false&serverTimezone=UTC
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect

@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: kafka-streams-join
+  cloud:
+    stream:
+      bindings:
+        onboarding:
+          destination: onboarding
+          contentType: application/json
+        onboardingOutput:
+          destination: onboarding
+          contentType: application/json
+        company:
+          destination: company
+          contentType: application/json
+        companyOutput:
+          destination: company
+          contentType: application/json
+      kafka:
+        binder:
+          brokers: default
+        streams:
+          binder:
+            brokers: default
+            configuration:
+              commit.interval.ms: 1000
+              default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+          bindings:
+            onboarding:
+              consumer:
+                keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            company:
+              consumer:
+                keySerde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        bindings:
+          onboardingOutput:
+            producer:
+              configuration:
+                key:
+                  serializer: org.apache.kafka.common.serialization.StringSerializer
+          companyOutput:
+            producer:
+              configuration:
+                key:
+                  serializer: org.apache.kafka.common.serialization.StringSerializer

@@ -1,0 +1,7 @@
+{
+  "type": "delete_event",
+  "timestamp": "2019-01-18T12:03:23.1163322+01:00",
+  "data": {
+    "result": "ok"
+  }
+}

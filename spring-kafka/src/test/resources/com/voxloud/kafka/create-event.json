@@ -1,0 +1,8 @@
+{
+  "type": "create_event",
+  "timestamp": "2019-01-18T12:03:23.1163322+01:00",
+  "data": {
+    "id": 8,
+    "name": "Postman Monolyth Test 08"
+  }
+}

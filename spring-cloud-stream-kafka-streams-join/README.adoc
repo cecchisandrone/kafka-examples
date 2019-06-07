@@ -1,0 +1,8 @@
+== What is this app?
+
+This is an example of a Spring Cloud Stream processor using Kafka Streams support.
+
+The application uses two KStreams and joins messages within a temporal window
+
+=== Running the app:
+Start the app and use REST endpoints to push messages or run Producers main class

@@ -1,0 +1,29 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: user
+          group: hello
+        output:
+          contentType: application/*+avro
+          destination: user
+      kafka:
+        binder:
+          brokers: default:9092
+        bindings:
+          input:
+            consumer:
+              configuration:
+                key:
+                  deserializer: org.apache.kafka.common.serialization.StringDeserializer
+          output:
+            producer:
+              configuration:
+                key:
+                  serializer: org.apache.kafka.common.serialization.StringSerializer
+      schema:
+        avro:
+          subjectNamingStrategy: com.example.avro.CustomSubjectNamingStrategy
+      schemaRegistryClient:
+        endpoint: http://default:8081

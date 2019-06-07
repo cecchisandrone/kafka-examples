@@ -1,0 +1,24 @@
+{
+  "type" : "record",
+  "name" : "UserValue",
+  "namespace" : "com.example.user",
+  "fields" : [ {
+    "name" : "name",
+    "type" : "string",
+    "doc" : "User name"
+  }, {
+    "name" : "surname",
+    "type" : "string",
+    "doc" : "User surname"
+  }, {
+    "name" : "age",
+    "type" : "int",
+    "doc" : "User age",
+    "default" : 0
+  }, {
+    "name" : "email",
+    "type" : "string",
+    "doc" : "User email",
+    "default" : "node@mail.it"
+  } ]
+}

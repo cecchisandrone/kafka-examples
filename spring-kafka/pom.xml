@@ -1,0 +1,85 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.voxloud.kafka</groupId>
+        <artifactId>kafka-examples-aggregator</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <groupId>com.voxloud.kafka</groupId>
+    <artifactId>spring-kafka</artifactId>
+    <version>0.0.1</version>
+
+    <name>spring-kafka</name>
+    <description>Intro to Kafka with Spring</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>${avro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
+            <version>${confluent.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- This is just an example for development purpose. Schemas are supposed to be already deployed on the schema registry -->
+            <plugin>
+                <groupId>io.confluent</groupId>
+                <artifactId>kafka-schema-registry-maven-plugin</artifactId>
+                <version>${confluent.version}</version>
+                <configuration>
+                    <schemaRegistryUrls>
+                        <param>${schema.registry.url}</param>
+                    </schemaRegistryUrls>
+                    <subjects>
+                        <com.voxloud.kafka.event.OrderCreated>src/main/avro/com.voxloud.kafka.event.OrderCreated.avsc</com.voxloud.kafka.event.OrderCreated>
+                        <com.voxloud.kafka.event.OrderCanceled>src/main/avro/com.voxloud.kafka.event.OrderCanceled.avsc</com.voxloud.kafka.event.OrderCanceled>
+                    </subjects>
+                    <outputDirectory>src/main/avro</outputDirectory>
+                    <subjectPatterns>
+                        <param>^com.voxloud.kafka.event.Order.*$</param>
+                    </subjectPatterns>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro-maven-plugin</artifactId>
+                <version>${avro.version}</version>
+                <configuration>
+                    <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
+                    <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
