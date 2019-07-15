@@ -5,25 +5,36 @@ spring:
         input:
           destination: user
           group: hello
+          consumer:
+            useNativeDecoding: true
         output:
-          contentType: application/*+avro
           destination: user
+          producer:
+            useNativeEncoding: true
       kafka:
         binder:
-          brokers: default:9092
+          autoCreateTopics: true
+          brokers: kafka:9092
+          consumer-properties:
+            auto.register.schemas: true
+            schema.registry.url: ${KAFKA_SCHEMA_REGISTRY_URL}
+            value.subject.name.strategy: io.confluent.kafka.serializers.subject.RecordNameStrategy
+          producer-properties:
+            auto.register.schemas: true
+            schema.registry.url: ${KAFKA_SCHEMA_REGISTRY_URL}
+            value.subject.name.strategy: io.confluent.kafka.serializers.subject.RecordNameStrategy
         bindings:
           input:
             consumer:
               configuration:
                 key:
                   deserializer: org.apache.kafka.common.serialization.StringDeserializer
+                value:
+                  deserializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroDeserializer
           output:
             producer:
               configuration:
                 key:
                   serializer: org.apache.kafka.common.serialization.StringSerializer
-      schema:
-        avro:
-          subjectNamingStrategy: com.example.avro.CustomSubjectNamingStrategy
-      schemaRegistryClient:
-        endpoint: http://default:8081
+                value:
+                  serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
