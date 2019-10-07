@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "name": "OrderCreatedValue",
+  "namespace": "com.example.order",
+  "fields": [
+    {
+      "name": "request_id",
+      "type": "string"
+    },
+    {
+      "name": "order_id",
+      "type": "long"
+    },
+    {
+      "name": "amount",
+      "type": "int"
+    },
+    {
+      "name": "item_id",
+      "type": "string"
+    }
+  ]
+}

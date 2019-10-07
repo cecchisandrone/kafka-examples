@@ -42,6 +42,7 @@
         <module>spring-kafka</module>
         <module>spring-cloud-stream-kafka-streams-join</module>
         <module>spring-cloud-stream-demo</module>
+        <module>spring-cloud-stream-bpm</module>
         <module>spring-cloud-stream-kafka-transactions</module>
     </modules>
 

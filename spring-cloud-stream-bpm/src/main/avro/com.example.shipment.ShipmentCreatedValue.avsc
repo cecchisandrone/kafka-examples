@@ -1,0 +1,27 @@
+{
+  "type": "record",
+  "name": "ShipmentCreatedValue",
+  "namespace": "com.example.shipment",
+  "fields": [
+    {
+      "name": "request_id",
+      "type": "string"
+    },
+    {
+      "name": "order_id",
+      "type": "long"
+    },
+    {
+      "name": "item",
+      "type": "string"
+    },
+    {
+      "name": "payment_type",
+      "type": "string"
+    },
+    {
+      "name": "courier",
+      "type": "string"
+    }
+  ]
+}

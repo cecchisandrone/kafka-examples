@@ -1,0 +1,75 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        orderCreatedSink:
+          destination: order.created
+          group: spring-cloud-stream-bpm
+          consumer:
+            useNativeDecoding: true
+        orderCreatedSource:
+          destination: order.created
+          producer:
+            useNativeEncoding: true
+        paymentCreatedSink:
+          destination: payment.created
+          group: spring-cloud-stream-bpm
+          consumer:
+            useNativeDecoding: true
+        paymentCreatedSource:
+          destination: payment.created
+          producer:
+            useNativeEncoding: true
+        shipmentCreatedSink:
+          destination: shipment.created
+          group: spring-cloud-stream-bpm
+          producer:
+            useNativeEncoding: true
+      kafka:
+        binder:
+          autoCreateTopics: true
+          brokers: kafka:9092
+          consumer-properties:
+            auto.register.schemas: true
+            schema.registry.url: ${KAFKA_SCHEMA_REGISTRY_URL}
+            value.subject.name.strategy: io.confluent.kafka.serializers.subject.RecordNameStrategy
+          producer-properties:
+            auto.register.schemas: true
+            schema.registry.url: ${KAFKA_SCHEMA_REGISTRY_URL}
+            value.subject.name.strategy: io.confluent.kafka.serializers.subject.RecordNameStrategy
+        bindings:
+          orderCreatedSink:
+            consumer:
+              configuration:
+                key:
+                  deserializer: org.apache.kafka.common.serialization.StringDeserializer
+                value:
+                  deserializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroDeserializer
+          orderCreatedSource:
+            producer:
+              configuration:
+                key:
+                  serializer: org.apache.kafka.common.serialization.StringSerializer
+                value:
+                  serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+          paymentCreatedSink:
+            consumer:
+              configuration:
+                key:
+                  deserializer: org.apache.kafka.common.serialization.StringDeserializer
+                value:
+                  deserializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroDeserializer
+          paymentCreatedSource:
+            producer:
+              configuration:
+                key:
+                  serializer: org.apache.kafka.common.serialization.StringSerializer
+                value:
+                  serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+          shipmentCreatedSource:
+            producer:
+              configuration:
+                key:
+                  serializer: org.apache.kafka.common.serialization.StringSerializer
+                value:
+                  serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer

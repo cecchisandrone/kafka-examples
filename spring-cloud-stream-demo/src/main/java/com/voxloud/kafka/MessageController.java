@@ -1,13 +1,12 @@
-package com.example;
+package com.voxloud.kafka;
 
+import com.voxloud.kafka.user.UserValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.user.UserValue;
 
 @RestController
 public class MessageController {
