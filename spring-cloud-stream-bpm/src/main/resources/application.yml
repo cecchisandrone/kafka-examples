@@ -20,9 +20,8 @@ spring:
           destination: payment.created
           producer:
             useNativeEncoding: true
-        shipmentCreatedSink:
+        shipmentCreatedSource:
           destination: shipment.created
-          group: spring-cloud-stream-bpm
           producer:
             useNativeEncoding: true
       kafka:
@@ -73,3 +72,7 @@ spring:
                   serializer: org.apache.kafka.common.serialization.StringSerializer
                 value:
                   serializer: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerializer
+  datasource:
+    url: jdbc:mysql://default:3306/kafka_test?autoReconnect=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: voxloud

@@ -1,9 +1,8 @@
-package com.voxloud.kafka;
+package com.voxloud.kafka.controller;
 
 import com.example.order.OrderCreatedValue;
 import com.example.payment.PaymentCreatedValue;
-import com.voxloud.kafka.controller.OrderCreatedDto;
-import com.voxloud.kafka.controller.PaymentCreatedDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.MessageChannel;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Slf4j
 public class MessageController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class MessageController {
 
         orderCreatedSource
                 .send(MessageBuilder.withPayload(orderCreatedValue).setHeader(KafkaHeaders.MESSAGE_KEY, orderCreatedValue.getRequestId()).build());
-        System.out.println("OrderCreatedValue message sent");
+        log.info("OrderCreatedValue message sent");
     }
 
     @PostMapping("/payment")
@@ -41,6 +41,6 @@ public class MessageController {
         paymentCreatedSource
                 .send(MessageBuilder.withPayload(paymentCreatedValue).setHeader(KafkaHeaders.MESSAGE_KEY, paymentCreatedValue.getRequestId())
                                     .build());
-        System.out.println("PaymentCreatedValue message sent");
+        log.info("PaymentCreatedValue message sent");
     }
 }
