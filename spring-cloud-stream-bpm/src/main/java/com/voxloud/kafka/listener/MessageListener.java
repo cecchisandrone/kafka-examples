@@ -64,6 +64,8 @@ public class MessageListener {
                                                                              .correlateWithResult();
 
             log.info("" + messageCorrelationResult.getResultType());
+        } else {
+            throw new IllegalStateException("Cannot correlate message with existing process instances");
         }
     }
 }

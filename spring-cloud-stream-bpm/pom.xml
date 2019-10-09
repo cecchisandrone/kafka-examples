@@ -70,26 +70,22 @@
             <artifactId>camunda-bpm-spring-boot-starter</artifactId>
             <version>${camunda.spring.boot.starter.version}</version>
         </dependency>
+        <!-- Needed for Script tasks -->
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <version>2.4.15</version>
         </dependency>
         <dependency>
-            <groupId>org.camunda.bpm</groupId>
-            <artifactId>camunda-engine-plugin-spin</artifactId>
-            <version>7.11.0</version>
+            <groupId>org.camunda.bpm.springboot</groupId>
+            <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
+            <version>${camunda.spring.boot.starter.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.camunda.bpm.extension.mockito</groupId>
             <artifactId>camunda-bpm-mockito</artifactId>
             <version>3.1.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.camunda.bpm.springboot</groupId>
-            <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
-            <version>${camunda.spring.boot.starter.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- Camunda BPM end -->

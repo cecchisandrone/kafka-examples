@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1xd5mhk" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.5">
-  <bpmn:process id="shipment" isExecutable="true">
+  <bpmn:process id="shipment" isExecutable="true" camunda:historyTimeToLive="0">
     <bpmn:endEvent id="EndEvent_1ysbxrt">
       <bpmn:incoming>SequenceFlow_0az6nf0</bpmn:incoming>
     </bpmn:endEvent>
