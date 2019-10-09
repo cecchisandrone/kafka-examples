@@ -1,3 +1,12 @@
+camunda:
+  bpm:
+    generic-properties:
+      properties:
+        historyCleanupBatchWindowStartTime: "00:01"
+        historyCleanupBatchWindowEndTime: "23:59"
+        historyCleanupStrategy: endTimeBased
+    jpa:
+      enabled: true
 spring:
   cloud:
     stream:
