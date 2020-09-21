@@ -16,7 +16,7 @@
     </parent>
 
     <properties>
-        <schema.registry.url>http://default:8081</schema.registry.url>
+        <schema.registry.url>http://kafka:8081</schema.registry.url>
     </properties>
 
     <dependencyManagement>

@@ -1,13 +1,14 @@
 package com.voxloud.kafka;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.voxloud.kafka.event.BaseEvent;
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-
 import java.io.File;
 import java.io.IOException;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.voxloud.kafka.message.json.BaseEvent;
+import org.junit.Before;
+import org.junit.Test;
+
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 public class EventSerializationTest {
 

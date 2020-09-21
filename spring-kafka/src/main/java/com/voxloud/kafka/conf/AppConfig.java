@@ -2,6 +2,7 @@ package com.voxloud.kafka.conf;
 
 import com.voxloud.kafka.consumer.MessageConsumer;
 import com.voxloud.kafka.producer.MessageProducer;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,7 +15,7 @@ public class AppConfig {
     }
 
     @Bean
-    public MessageConsumer messageListener() {
+    public MessageConsumer messageConsumer() {
         return new MessageConsumer();
     }
 }

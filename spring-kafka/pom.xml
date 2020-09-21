@@ -47,6 +47,10 @@
             <artifactId>kafka-avro-serializer</artifactId>
             <version>${confluent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -61,12 +65,12 @@
                         <param>${schema.registry.url}</param>
                     </schemaRegistryUrls>
                     <subjects>
-                        <com.voxloud.kafka.event.OrderCreated>src/main/avro/com.voxloud.kafka.event.OrderCreated.avsc</com.voxloud.kafka.event.OrderCreated>
-                        <com.voxloud.kafka.event.OrderCanceled>src/main/avro/com.voxloud.kafka.event.OrderCanceled.avsc</com.voxloud.kafka.event.OrderCanceled>
+                        <com.voxloud.kafka.message.avro.OrderCreated>src/main/avro/com.voxloud.kafka.message.avro.OrderCreated.avsc</com.voxloud.kafka.message.avro.OrderCreated>
+                        <com.voxloud.kafka.message.avro.OrderCanceled>src/main/avro/com.voxloud.kafka.message.avro.OrderCanceled.avsc</com.voxloud.kafka.message.avro.OrderCanceled>
                     </subjects>
                     <outputDirectory>src/main/avro</outputDirectory>
                     <subjectPatterns>
-                        <param>^com.voxloud.kafka.event.Order.*$</param>
+                        <param>^com.voxloud.kafka.message.avro.*$</param>
                     </subjectPatterns>
                 </configuration>
             </plugin>

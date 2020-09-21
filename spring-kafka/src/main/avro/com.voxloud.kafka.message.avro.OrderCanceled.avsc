@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "name": "OrderCanceled",
+  "namespace": "com.voxloud.kafka.message.avro",
+  "fields": [
+    {
+      "name": "order_id",
+      "type": "long",
+      "doc": "Id of the order filed"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "doc": "Date of the cancellation",
+      "logicalType": "date"
+    }
+  ]
+}

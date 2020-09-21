@@ -2,7 +2,8 @@
 
 This is a simple Spring Boot app to demonstrate sending and receiving of messages in Kafka using spring-kafka.
 
-As Kafka topics are not created automatically by default, this application requires that you create the following topics manually by running: `create-topics.sh`
+As Kafka topics are not created automatically by default, this application requires that you create the following topics manually by running: `create-topics.sh` 
+**Important:** development environment should be already running with Docker using https://bitbucket.org/voxloud/kafka
 
 When the application runs successfully, following output is logged on to console (along with spring logs):
 
@@ -16,20 +17,3 @@ mvn schema-registry:download # To download remote schema to local folder
 ````
 
 **Important:** before running Avro examples, schemas must be registered to the referenced schema registry
-
-#### Message received from the 'command' topic by the basic listeners with groups foo and bar
->Received Message in group 'foo': Hello, World!<br>
-Received Message in group 'bar': Hello, World!
-
-#### Message received from the 'command' topic, with the partition info
->Received Message: Hello, World! from partition: 0
-
-#### Message received from the 'partitioned' topic, only from specific partitions
->Received Message: Hello To Partioned Topic! from partition: 0<br>
-Received Message: Hello To Partioned Topic! from partition: 3
-
-#### Message received from the 'filtered' topic after filtering
->Received Message in filtered listener: Hello command!
-
-#### Message (Serialized Java Object) received from the 'event' topic
->Received event command: Greetings, World!!
