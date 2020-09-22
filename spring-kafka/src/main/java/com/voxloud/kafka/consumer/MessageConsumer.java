@@ -16,7 +16,6 @@ public class MessageConsumer {
                    containerFactory = "eventKafkaListenerContainerFactory")
     public void eventListenerPartition(BaseEvent event, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) throws InterruptedException {
         log.info("Received event {} on partition {}", event, partition);
-        Thread.sleep(15000);
     }
 
     @KafkaListener(topics = "${order.topic.name}", containerFactory = "orderKafkaListenerContainerFactory")
